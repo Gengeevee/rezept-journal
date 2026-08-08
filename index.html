@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mein Rezept Journal</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#c1c1e">
+</head>
+<body>
+
+    <div class="phone-container">
+        
+        <!-- ================= HAUPTMENÜ ANSICHT ================= -->
+        <div id="homeScreen" class="app-screen">
+            <div class="menu-header">
+                <div class="header-top">
+                    <h2>My Cookbook 🍳</h2>
+                    <button id="btnOpenForm" class="circle-plus-btn">+</button>
+                </div>
+                <p>Was kochen wir :3 ?</p>
+            </div>
+
+            <div class="categories-grid">
+                <!-- Kategorie: Frühstück -->
+                <div class="category-card" id="catBreakfast">
+<img src="Breakfast.png" alt="Frühstück">
+                    <div class="category-info">
+                        <h3>Frühstück</h3>
+                        <p id="countBreakfast">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+
+                <!-- Kategorie: Mittagessen -->
+                <div class="category-card" id="catLunch">
+<img src="Lunch.png" alt="Mittagessen">
+                    <div class="category-info">
+                        <h3>Mittagessen</h3>
+                        <p id="countLunch">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+
+                <!-- Kategorie: Dessert -->
+                <div class="category-card" id="catDessert">
+<img src="Dessert.png" alt="Dessert">
+                    <div class="category-info">
+                        <h3>Dessert</h3>
+                        <p id="countDessert">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+				
+				 <!-- Kategorie: Getränke -->
+                <div class="category-card" id="catGetränke">
+<img src="Drinks.png" alt="Getränke">
+                    <div class="category-info">
+                        <h3>Getränke</h3>
+                        <p id="countGetränke">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+				
+				<!-- Kategorie: Snacks -->
+                <div class="category-card" id="catSnacks">
+<img src="Snacks.png" alt="Snacks">
+                    <div class="category-info">
+                        <h3>Snacks</h3>
+                        <p id="countSnacks">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+				
+				<!-- Kategorie: Sonstiges -->
+                <div class="category-card" id="catSonstiges">
+<img src="Random.png" alt="Sonstiges">
+                    <div class="category-info">
+                        <h3>Sonstiges</h3>
+                        <p id="countSonstiges">0 Rezepte verfügbar</p>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+		
+
+
+
+        <!-- ================= REZEPT-LISTE INNERHALB EINER KATEGORIE ================= -->
+        <div id="listScreen" class="app-screen hidden">
+            <div class="menu-header">
+                <button id="btnBackToHome" class="back-arrow-btn">← Home</button>
+                <h2 id="currentCategoryTitle" style="margin-top: 25px;">Kategorie</h2>
+            </div>
+            <div id="categoryRecipeList" class="categories-grid">
+                <!-- Hier landen die Karten der Rezepte dieser Kategorie -->
+            </div>
+        </div>
+
+        <!-- ================= REZEPT DETAIL-ANSICHT ================= -->
+        <div id="recipeScreen" class="app-screen hidden">
+            <div class="recipe-header">
+                <button id="btnBackToList" class="back-arrow-btn">← Liste</button>
+                <!-- NEU: Bearbeiten Button -->
+                <button id="btnEditRecipe" class="edit-btn">✏️ Bearbeiten</button>
+                <img id="detailImage" src="" alt="Rezeptbild" class="cover-image">
+                <div class="recipe-title-bar">
+                    <h1 id="detailTitle">Rezept Titel</h1>
+                    <span id="detailTime" class="time-tag">⏱️ -- Min.</span>
+                </div>
+            </div>
+
+            <div class="ingredients-section">
+                <h3>Zutaten</h3>
+                <ul id="detailIngredients">
+                    <!-- Wird per JS befüllt -->
+                </ul>
+            </div>
+
+            <div class="steps-container">
+                <h3>Anleitung</h3>
+                <div id="detailStepsList" class="steps-list">
+                    <!-- Wird per JS befüllt -->
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="btnPrev">Zurück</button>
+                <button id="btnNext">Weiter</button>
+            </div>
+        </div>
+
+        <!-- ================= FORMULAR ANSICHT (NEUES REZEPT) ================= -->
+        <div id="formScreen" class="app-screen hidden">
+            <div class="menu-header">
+                <button id="btnCloseForm" class="back-arrow-btn">✕ Schließen</button>
+                <!-- NEU: ID für die Überschrift, damit wir sie ändern können -->
+                <h2 id="formScreenTitle" style="margin-top: 25px;">Neues Rezept</h2>
+            </div>
+            
+            <form id="recipeForm" class="recipe-form">
+                <div class="form-group">
+                    <label for="formTitle">Name des Gerichts</label>
+                    <input type="text" id="formTitle" required placeholder="z.B. Fluffy Pancakes">
+                </div>
+
+                <div class="form-group">
+                    <label for="formCategory">Kategorie</label>
+                    <select id="formCategory">
+                        <option value="Frühstück">Frühstück</option>
+                        <option value="Mittagessen">Mittagessen</option>
+                        <option value="Dessert">Dessert</option>
+						<option value="Getränke">Getränke</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="formTime">Zubereitungszeit (Minuten)</label>
+                    <input type="number" id="formTime" required min="1" placeholder="20">
+                </div>
+
+                <!-- NEU: Dateiauswahl für Gerätespeicher -->
+                <div class="form-group">
+                    <label for="formImage">Cover-Bild aussuchen</label>
+                    <input type="file" id="formImage" accept="image/*" style="background-color: #2c2c2e; padding: 8px;">
+                </div>
+
+                <div class="form-group">
+                    <label for="formIngredients">Zutaten (pro Zeile eine Zutat)</label>
+                    <textarea id="formIngredients" required placeholder="200g Mehl&#10;2 Eier&#10;1 EL Zucker"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="formSteps">Schritte (pro Zeile ein Schritt)</label>
+                    <textarea id="formSteps" required placeholder="Trockene Zutaten mischen.&#10;Milch und Eier unterrühren.&#10;In der Pfanne ausbacken."></textarea>
+                </div>
+
+                <!-- NEU: ID für den Speicher-Button, um Text anzupassen -->
+                <button type="submit" id="btnSaveRecipe" class="save-btn">Rezept speichern 💾</button>
+				
+				<button type="button" id="btnDeleteRecipe" class="delete-btn hidden">Rezept löschen</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

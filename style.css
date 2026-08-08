@@ -1,0 +1,143 @@
+/* Zusätzlicher Style für den Bearbeiten-Button oben rechts */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0b0c;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-container {
+    width: 100vw;
+    max-width: 450px;
+    height: 100vh;
+    background-color: #1c1c1e;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+.hidden { display: none !important; }
+
+.app-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.menu-header { padding: 30px 20px 10px 20px; position: relative; }
+.header-top { display: flex; justify-content: space-between; align-items: center; }
+.menu-header h2 { margin: 0; font-size: 28px; font-weight: 700; }
+.menu-header p { margin: 5px 0 0 0; color: #8e8e93; font-size: 15px; }
+
+/* Neuer Plus Button im iOS-Style */
+.circle-plus-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #007aff;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+    transition: transform 0.1s ease;
+}
+.circle-plus-btn:active { transform: scale(0.9); }
+
+.categories-grid { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.category-card { position: relative; height: 120px; border-radius: 20px; overflow: hidden; cursor: pointer; transition: transform 0.2s ease; }
+.category-card:active { transform: scale(0.97); }
+.category-card img { width: 100%; height: 100%; object-fit: cover; }
+.category-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); }
+.category-info h3 { margin: 0; font-size: 18px; color: #fff; }
+.category-info p { margin: 2px 0 0 0; font-size: 12px; color: #aae2ff; }
+
+.back-arrow-btn {
+    position: absolute; top: 15px; left: 15px; z-index: 10;
+    background-color: rgba(255, 255, 255, 0.15); color: white; border: none;
+    padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    cursor: pointer; backdrop-filter: blur(5px);
+}
+
+.recipe-header { position: relative; height: 25vh; min-height: 180px; width: 100%; }
+.cover-image { width: 100%; height: 100%; object-fit: cover; }
+.recipe-title-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); display: flex; justify-content: space-between; align-items: center; }
+.recipe-title-bar h1 { margin: 0; font-size: 22px; font-weight: 700; }
+.time-tag { background-color: rgba(255, 255, 255, 0.2); padding: 5px 10px; border-radius: 20px; font-size: 12px; backdrop-filter: blur(5px); }
+
+.ingredients-section { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.ingredients-section h3, .steps-container h3 { margin: 0 0 10px 0; color: #8e8e93; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.ingredients-section ul { margin: 0; padding-left: 20px; column-count: 2; gap: 20px; }
+.ingredients-section li { font-size: 15px; color: #e5e5ea; margin-bottom: 5px; }
+
+.steps-container { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.steps-list { position: relative; flex-grow: 1; width: 100%; display: flex; justify-content: center; align-items: center; min-height: 200px; }
+.step-card { position: absolute; width: 95%; box-sizing: border-box; background-color: rgba(255, 255, 255, 0.05); border-radius: 18px; padding: 20px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease; opacity: 0; transform: translateY(120px) scale(0.7); pointer-events: none; }
+.step-card.active { opacity: 1; transform: translateY(0) scale(1); background-color: #007aff; pointer-events: auto; z-index: 3; box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4); }
+.step-card.active .step-number { color: #d1e7ff; }
+.step-card.prev { opacity: 0.3; transform: translateY(-70px) scale(0.88); z-index: 2; }
+.step-card.next { opacity: 0.3; transform: translateY(70px) scale(0.88); z-index: 2; }
+.step-number { font-weight: 700; font-size: 12px; display: block; margin-bottom: 6px; color: #8e8e93; }
+.step-card p { margin: 0; font-size: 15px; line-height: 1.5; }
+
+.nav-buttons { display: flex; justify-content: space-between; padding: 20px; background-color: #121214; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.nav-buttons button { background-color: #2c2c2e; color: #ffffff; border: none; padding: 12px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; width: 45%; }
+.nav-buttons button:active { background-color: #3a3a3c; }
+
+/* ================= NEUE STYLES FÜR DAS FORMULAR ================= */
+.recipe-form { padding: 0 20px 30px 20px; display: flex; flex-direction: column; gap: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 13px; color: #8e8e93; font-weight: 600; text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+    background-color: #2c2c2e; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #fff; padding: 12px; font-size: 15px; outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #007aff; }
+.form-group textarea { height: 90px; resize: none; font-family: inherit; }
+.save-btn {
+    background-color: #34c759; color: white; border: none; padding: 14px;
+    border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;
+    margin-top: 10px; box-shadow: 0 4px 12px rgba(52, 199, 89, 0.2);
+}
+.save-btn:active { transform: scale(0.98); }
+.edit-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    background-color: rgba(0, 122, 255, 0.9);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background-color 0.2s;
+}
+
+.delete-btn {
+	background-color: #ff453a; color: white; border: none; padding: 14px;
+	border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;
+	margin-top: 10px; box-shadow: 0 4px 12px rgba(255, 69, 58, 0.2);
+	transition: transform 0.1s ease;
+}
+
+.edit-btn:active { background-color: #0056b3; }
+.save-btn:active { transform: scale(0.98); }
+.delete-btn:active { transform: scale(0.98); }
